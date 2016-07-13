@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+	
+	<!-- User accounts -->	<!-- ADMINS -->
+		
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password" value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="admin3" />
+		<property name="password" value="32cacb2f994f6b42183a1300d9a3e8d6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- User accounts -->	<!-- PLAYERS -->
+		
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="player1" />
+		<property name="password" value="5d2bbc279b5ce75815849d5e3f0533ec" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="player2" />
+		<property name="password" value="88e77ff74930f37010370c296d14737b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="player3" />
+		<property name="password" value="1aa3814dca32e4c0b79a2ca047ef1db0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="player4" />
+		<property name="password" value="12efaba7fd50f5c66bd295683c0ce2a7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="player5" />
+		<property name="password" value="c5aec8b7110bb97bf59ab1a06805ebdd" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="player6" />
+		<property name="password" value="9d470eed6fd655c08563e806848cdc6d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PLAYER" />
+				</bean>
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- ADMINISTRATOR -->
+		
+	<bean id="admin1" class="domain.Admin">
+		<property name="name" value="David" />
+		<property name="surname" value="Olid" />
+		<property name="nickname" value="Buhito" />
+		<property name="email" value="daveolre@gmail.com" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+	
+	<bean id="admin2" class="domain.Admin">
+		<property name="name" value="Cristina" />
+		<property name="surname" value="Padilla" />
+		<property name="nickname" value="GeekCriiz" />
+		<property name="email" value="geekcriiz@gmail.com" />
+		<property name="userAccount" ref="userAccount2" />
+	</bean>
+
+	<bean id="admin3" class="domain.Admin">
+		<property name="name" value="Victor" />
+		<property name="surname" value="Cánovas" />
+		<property name="nickname" value="XSaevar" />
+		<property name="email" value="saevargamer@gmail.com" />
+		<property name="userAccount" ref="userAccount3" />
+	</bean>
+	
+	<!-- PLAYER -->
+	
+	<bean id="player1" class="domain.Player">
+		<property name="name" value="David" />
+		<property name="surname" value="Olid" />
+		<property name="nickname" value="Dave Elric" />
+		<property name="email" value="daveolre@hotmail.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="player3" />
+			</list>
+		</property>
+		<property name="following">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="player2" class="domain.Player">
+		<property name="name" value="Cristina" />
+		<property name="surname" value="Padilla" />
+		<property name="nickname" value="Cristy" />
+		<property name="email" value="cristy__5@gmail.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="player3" />
+			</list>
+		</property>
+		<property name="following">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="player3" class="domain.Player">
+		<property name="name" value="Victor" />
+		<property name="surname" value="Cánovas" />
+		<property name="nickname" value="Antalose" />
+		<property name="email" value="victorccjj@msn.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount6" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="following">
+			<list>
+				<ref bean="player1" />
+				<ref bean="player2" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="player4" class="domain.Player">
+		<property name="name" value="Cersei" />
+		<property name="surname" value="Lannister" />
+		<property name="nickname" value="Cersei" />
+		<property name="email" value="cersei@lannister.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="following">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="player5" class="domain.Player">
+		<property name="name" value="John" />
+		<property name="surname" value="Snow" />
+		<property name="nickname" value="JohnSnow" />
+		<property name="email" value="john@stark.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="following">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="player6" class="domain.Player">
+		<property name="name" value="Daenerys" />
+		<property name="surname" value="Targaryen" />
+		<property name="nickname" value="Daenerys" />
+		<property name="email" value="daenerys@targaryen.com" />
+		<property name="negatives" value="0" />
+		<property name="bans" value="0" />
+		<property name="blocked" value="false" />
+		<property name="averageScore" value="0" />
+		<property name="played" value="0" />
+		<property name="won" value="0" />
+		<property name="abandoned" value="0" />
+		<property name="favouriteCat" value="" />
+		<property name="userAccount" ref="userAccount9" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+		<property name="games">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+		<property name="following">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Questions -->
+	
+	<!-- Questions --> 	<!-- DEFINITION -->
+
+	<bean id="question1" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abecería" />
+		<property name="answer" value="Tienda de comestibles" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="question2" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abalear" />
+		<property name="answer" value="Separar del grano ya aventado los residuos de la paja" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question3" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abarca" />
+		<property name="answer" value="Calzado rústico, sandalias" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question4" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abarraganarse" />
+		<property name="answer" value="Ponerse a vivir juntos un hombre y una mujer como si estuvieran casados, sin estarlo" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question5" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abarrotes" />
+		<property name="answer" value="Artículos de uso doméstico" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question6" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abate" />
+		<property name="answer" value="Eclesiástico extranjero, francés o italiano" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question7" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Aberrar" />
+		<property name="answer" value="Desviarse de lo natural" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question8" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abigarrar" />
+		<property name="answer" value="Combinar colores diversos con mal efecto" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question9" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Abjurar" />
+		<property name="answer" value="Renegar de una creencia u opinión con juramento" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question10" class="domain.Question">	
+		<property name="category" value="DEFINITION" />	
+		<property name="description" value="Ablandabrevas" />
+		<property name="answer" value="Persona inútil" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Questions --> 	<!-- DATE -->
+	
+	<bean id="question201" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="03/05" />
+		<property name="answer" value="Día de abrace a su gato" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question202" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="18/03" />
+		<property name="answer" value="Día Internacional del Sueño" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question203" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="13/08" />
+		<property name="answer" value="Día Internacional del Zurdo" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question204" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="03/04" />
+		<property name="answer" value="Día Internacional del número PI" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question205" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="05/08" />
+		<property name="answer" value="Día Internacional de la Cerveza" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question206" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="13/10" />
+		<property name="answer" value="Día Mundial del Huevo" />
+		<property name="answerPlayers">
+			<list>
+				</list>
+		</property>
+	</bean>
+	
+	<bean id="question207" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="01/04" />
+		<property name="answer" value="Día de las novias" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question208" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="06/04" />
+		<property name="answer" value="Día Internacional de peleas con almohadas" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question209" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="01/12" />
+		<property name="answer" value="Día Nacional del Scrabble" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question210" class="domain.Question">	
+		<property name="category" value="DATE" />	
+		<property name="description" value="04/12" />
+		<property name="answer" value="Día Nacional de la Galleta" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Questions --> 	<!-- FILM -->
+	
+	<bean id="question401" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="El abominable hmobre de la costa del Sol" />
+		<property name="answer" value="Una joven tan atractiva como soñadora es testigo de cómo su desastroso prometido acaba alcanzando su gran ilusión: convertirse en Jefe de Relaciones Públicas de un gran hotel de la Costa del Sol" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="question402" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="Waka-Waka" />
+		<property name="answer" value="Las aventuras de cuatro chicos, dos chicas y nu mono, en lucha con una banda de jóvenes de distinta extracción social y dos policias" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question403" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="Abre tu fosa amigo, llega Sabata" />
+		<property name="answer" value="Steve se ha propuesto vengar la muerte de su padre, asesinado por uno de los secuaces del cacique Miller. Éste contrata los servicios de un famoso pistolero llamado Sabata y le encarga la misión de matar a Steve." />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question404" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="Una vez al año ser Hippy no hace daño" />
+		<property name="answer" value="Un conjunto musical recorre los pueblos españoles sin éxito; llegados a Torremolinos conocen a un vividor que se incorpora al grupo poniéndole al día; nacen así 'Los Hippy-Loyas' " />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question405" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="Un adulterio decente" />
+		<property name="answer" value="Un eminente doctor sostiene la teoría de que el adulterio lo produce un virus contagioso, cuyos efectos él puede aliviar en su clínica" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question406" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="La visita que no tocó el timbre" />
+		<property name="answer" value="Dos solterones recalcitantes reciben una inesperada visita: un niño recién nacido al que la madre no puede mantener" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question407" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="El alcalde, el guardia y... la jirafita" />
+		<property name="answer" value="Los apuros sufridos por el infeliz protagonista a partir del día en que alcanza su mayor ilusión: ser nombrado policía de tráfico" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question408" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="Vísteme con flores y fórrame de dólares" />
+		<property name="answer" value="Un grupo de 'hippies' se presentan en una aldea amenazada con desaparecer por culpa de la emigración" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question409" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="A lo loco y con la cara de otro" />
+		<property name="answer" value="Un detective ejerce su profesión siguiendo el modelo de Humphrey Bogart" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question410" class="domain.Question">	
+		<property name="category" value="FILM" />	
+		<property name="description" value="La viudita ye-yé" />
+		<property name="answer" value="Una extravagante excabaretera dispone en su testamento que si su hija quiere heredarlo debe casarse con un hombre más feo que ella" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Questions --> 	<!-- ACRONYM -->
+	
+	<bean id="question601" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="AIEA" />
+		<property name="answer" value="Agencia Internacional para Energía Atómica" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question602" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="ADG" />
+		<property name="answer" value="Asociación Deportiva Guanacasteca" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question603" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="ADUE" />
+		<property name="answer" value="Asociación De Universitarias Españolas" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question604" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="AETCO" />
+		<property name="answer" value="Asociación Española de Terapia del Comportamiento" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question605" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="ANO" />
+		<property name="answer" value="Asociación Nacional de Odontólogos" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question606" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="AGE" />
+		<property name="answer" value="Agrupación de Guerrilleros Españoles" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question607" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="BIRF" />
+		<property name="answer" value="Banco Internacional de Reconstrucción y Fomento" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question608" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="BAMBI" />
+		<property name="answer" value="Batalla Mundial de Bizcochos" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question609" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="BMV" />
+		<property name="answer" value="Beata María Virgo" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question610" class="domain.Question">	
+		<property name="category" value="ACRONYM" />	
+		<property name="description" value="BOLPEBRA" />
+		<property name="answer" value="Bolivia Perú Brasil" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Questions -->	<!-- CHARACTER__ -->
+
+	<bean id="question801" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Allan Konigsberg" />
+		<property name="answer" value="Auténtico nombre de Woody Allen" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question802" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="John Pemberton" />
+		<property name="answer" value="Inventor de la Coca-Cola" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question803" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Morgan Robertson" />
+		<property name="answer" value="Autor que predijo el hundimiento del Titanic 14 años antes de que sucediera" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question804" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Annette Kellerman" />
+		<property name="answer" value="Primera actriz que apareció desnuda en una película" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question805" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="James Naismith" />
+		<property name="answer" value="Profesor de gimnasia que inventó el baloncesto" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question806" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Simeon Stylites" />
+		<property name="answer" value="Monje sirio que pasó 30 años encadenado a la cúspide de una columna de piedra" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question807" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Charles Lutwidge Dodgson" />
+		<property name="answer" value="Auténtico nombre de Lewis Carroll, autor de Alicias en el país de las maravillas" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question808" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Leona Lax" />
+		<property name="answer" value="Creadora del sistema de medida de las copas de los sujetadores de mujeres" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question809" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Frieda Carter" />
+		<property name="answer" value="Inventora del mini-golf" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="question810" class="domain.Question">	
+		<property name="category" value="CHARACTER_" />	
+		<property name="description" value="Vicentzo Perruggia" />
+		<property name="answer" value="Ladrón que mantuvo la Mona Lisa escondida bajo su cama durante dos años" />
+		<property name="answerPlayers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * security.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * Author (A) 2012 Rafael Corchuelo (corchu@us.es)
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/" access="permitAll" /> 
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+
+		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/player/createPlayer.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/player/savePlayer.do" access="isAnonymous()" />
+		
+		<security:intercept-url pattern="/player/player/savePlayer.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/player/player/players.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/player/player/see.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/player/player/negative.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/player/admin/search.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/searchResults.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/players.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/playersBlocked.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/playersBans.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/see.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/player/admin/banPlayer.do" access="hasRole('ADMIN')" />	
+		
+		<security:intercept-url pattern="/admin/admin/see.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/admin/admin/edit.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/admin/admin/saveAdmin.do" access="hasRole('ADMIN')" />	
+		
+		<security:intercept-url pattern="/game/player/see.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/game/player/newCustomGame.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/game/player/newNormalGame.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/game/player/games.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/game/player/continueGame.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/following/player/following.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/following/player/see.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/following/player/search.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/following/player/searchResults.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/following/player/saveFollowing.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/alert/player/alert.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/alert/player/alertVote.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/score/player/gameRanking.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/vote/player/vote.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/request/player/pending.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/request/player/reject.do" access="hasRole('PLAYER')" />
+		<security:intercept-url pattern="/request/player/accept.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/answerPlayer/player/answer.do" access="hasRole('PLAYER')" />
+		
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>

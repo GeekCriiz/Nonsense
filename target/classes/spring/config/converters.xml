@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * converters.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
+	">
+
+	<util:list id="converters">
+	
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.GameToStringConverter" />
+		<bean class="converters.ScoreToStringConverter" />
+		<bean class="converters.RoundToStringConverter" />
+		<bean class="converters.QuestionToStringConverter" />
+		<bean class="converters.AlertToStringConverter" />
+		<bean class="converters.AnswerPlayerToStringConverter" />
+		<bean class="converters.VoteToStringConverter" />
+		<bean class="converters.OrderrToStringConverter" />
+		<bean class="converters.AdminToStringConverter" />
+		<bean class="converters.PlayerToStringConverter" />
+		<bean class="converters.RequestToStringConverter" />
+			
+		<bean class="converters.StringToActorConverter" />
+		<bean class="converters.StringToGameConverter" />
+		<bean class="converters.StringToScoreConverter" />
+		<bean class="converters.StringToRoundConverter" />
+		<bean class="converters.StringToQuestionConverter" />
+		<bean class="converters.StringToAlertConverter" />
+		<bean class="converters.StringToAnswerPlayerConverter" />
+		<bean class="converters.StringToVoteConverter" />
+		<bean class="converters.StringToOrderrConverter" />
+		<bean class="converters.StringToAdminConverter" />
+		<bean class="converters.StringToPlayerConverter" />
+		<bean class="converters.StringToRequestConverter" />
+	
+	</util:list>
+	
+</beans>
